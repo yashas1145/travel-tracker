@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Travel tracker</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+    </head>
+    <body>
+        <h1>Travel tracker</h1>
+        
+        <h3>Add a state</h3>
+        <form action="/state" method="post">
+            <input type="text" name="state_name" id="state_name" placeholder="State name" required>
+            <input type="text" name="state_code" id="state_code" placeholder="State code" required>
+            <input type="submit" value="Add state">
+        </form> 
+
+        <h3>States visited</h3>
+        <% if (locals.states) { %>
+            <div>
+                <table>
+                    <thead>
+                        <td>State name</td>
+                        <td>State code</td>
+                    </thead>
+                    <% for (let i=0; i<states.length; i++) { %>
+                        <tr>
+                            <td><%= states[i].state_name %></td>
+                            <td><%= states[i].state_code %></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        <% } else { %>
+        <% } %>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/jquery.js"></script>
+        <script src="/scripts/script.js"></script>
+    </body>
+</html>
