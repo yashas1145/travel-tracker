@@ -11,20 +11,20 @@
         
         <h3>Add a state</h3>
         <form action="/state" method="post">
-            <input type="text" name="state_name" id="state_name" placeholder="State name" required>
-            <input type="text" name="state_code" id="state_code" placeholder="State code" required>
-            <input type="submit" value="Add state">
+            <input class="form-control" type="text" name="state_name" id="state_name" placeholder="State name" required>
+            <input class="form-control" type="text" name="state_code" id="state_code" placeholder="State code" required>
+            <input class="btn btn-primary" type="submit" value="Add state">
         </form> 
 
         <h3>States visited</h3>
         <% if (locals.states) { %>
             <div>
-                <table>
+                <table class="table table-hover">
                     <thead>
-                        <td>State name</td>
-                        <td>State code</td>
+                        <th>State name</th>
+                        <th>State code</th>
                     </thead>
-                    <% for (let i=0; i<states.length; i++) { %>
+                    <% for (let i in states) { %>
                         <tr>
                             <td><%= states[i].state_name %></td>
                             <td><%= states[i].state_code %></td>

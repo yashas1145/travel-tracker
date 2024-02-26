@@ -31,12 +31,16 @@ app.get("/", async (req, res) => {
     res.render("index.ejs", data);
 });
 
-app.post("/state", async (req, res) => {
+app.post("/state", async (req, res, err) => {
     let state_name = req.body["state_name"];
     let state_code = req.body["state_code"];
 
     if(state_code && state_name) {
-        await db.query("INSERT INTO states (state_name, state_code) VALUES ($1, $2)", [state_name, state_code]);
+        db.query("INSERT INTO states (state_name, state_code) VALUES ($1, $2)", [state_name, state_code], (err) => {
+            if (err) {
+                console.log(err.detail);
+            }
+        });
     }
     res.redirect("/");
 });
